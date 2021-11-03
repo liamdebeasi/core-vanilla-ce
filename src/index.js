@@ -15,7 +15,9 @@ document.getElementById("app").innerHTML = `
 const button = document.querySelector('button');
 button.onclick = () => {
 	alertController.create({
-		title: 'My Title'
+		header: 'My Alert', 
+		buttons: ['Ok'], 
+		message: 'Hooray!'
 	}).then(alert => {
 		console.log('created alert', alert);
 		alert.present();

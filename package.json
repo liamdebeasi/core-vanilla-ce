@@ -8,7 +8,7 @@
     "build": "parcel build index.html"
   },
   "dependencies": {
-    "@ionic/core": "^6.0.0-dev.202111032109.5bd905d",
+    "@ionic/core": "^6.0.0-dev.202111032127.5bd905d",
     "ionicons": "5.5.2",
     "parcel-bundler": "^1.12.5"
   },
