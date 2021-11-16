@@ -1,26 +1,18 @@
-import { initialize } from "@ionic/core/components";
-import { alertController } from '@ionic/core/components';
-import { IonApp } from '@ionic/core/components/ion-app.js';
+import { IonIcon } from 'ionicons/components/ion-icon.js';
+import { airplane } from 'ionicons/icons';
+import { addIcons } from 'ionicons';
 
-initialize();
-customElements.define('ion-app', IonApp);
-document.documentElement.classList.add("ion-ce");
+// uncomment below to avoid URL parsing issue
+/*
+addIcons({
+	'airplane': airplane
+});
+*/
+
+customElements.define('ion-icon', IonIcon);
 
 document.getElementById("app").innerHTML = `
-	<ion-app>
-		<button>click me</button>
-	</ion-app>
+	<ion-icon name="airplane"></ion-icon>
 `;
 
-const button = document.querySelector('button');
-button.onclick = () => {
-	alertController.create({
-		header: 'My Alert', 
-		buttons: ['Ok'], 
-		message: 'Hooray!'
-	}).then(alert => {
-		console.log('created alert', alert);
-		alert.present();
-	})
-}
-console.log('alert',alertController)
+
