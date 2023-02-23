@@ -1,25 +1,27 @@
-import { initialize, alertController } from "@ionic/core/components";
-import { IonButton } from "@ionic/core/components/ion-button";
-
+import { initialize, modalController } from "@ionic/core/components";
+import { defineCustomElement as defineIonModal } from '@ionic/core/components/ion-modal.js';
 initialize();
 
 document.documentElement.classList.add("ion-ce");
-
-customElements.define("ion-button", IonButton);
+defineIonModal();
 
 document.getElementById("app").innerHTML = `
-	<ion-button>CE Button!</ion-button>
+	<button>Open Modal</button>
 `;
 
-const button = document.querySelector('ion-button');
-button.addEventListener('click', () => {
-	console.log('Creating alert...')
-	alertController.create({
-		header: 'Alert',
-		message: 'Hello World!',
-		buttons: ['Ok']
-	}).then((alert) => {
-		console.log('Alert created!', alert)
-		alert.present();
-	})
-});
+class AppComponent extends HTMLElement {
+	constructor() {
+		super();
+	}
+	
+	connectedCallback() {
+		this.innerHTML = 'Modal Content';
+	}
+}
+
+customElements.define('app-component', AppComponent);
+
+const btn = document.querySelector('button');
+btn.onclick = () => {
+	modalController.create({ component: 'app-component' }).then((modal) => modal.present());
+}
